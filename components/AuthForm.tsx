@@ -146,7 +146,7 @@ export function AuthForm() {
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-5 pt-2 pb-4">
             <FormField
               control={form.control}
               name="email"
@@ -182,7 +182,7 @@ export function AuthForm() {
               )}
             />
           </CardContent>
-          <CardFooter className="flex flex-col space-y-2">
+          <CardFooter className="flex flex-col space-y-6">
             <Button
               type="submit"
               className="w-full btn-primary"
@@ -192,16 +192,18 @@ export function AuthForm() {
                 ? (mode === 'login' ? 'Вход...' : 'Регистрация...')
                 : (mode === 'login' ? 'Войти' : 'Зарегистрироваться')}
             </Button>
-            <Button
-              type="button"
-              variant="link"
-              onClick={toggleMode}
-              className="w-full text-primary hover:text-primary/80"
-            >
-              {mode === 'login'
-                ? 'Нет аккаунта? Зарегистрироваться'
-                : 'Уже есть аккаунт? Войти'}
-            </Button>
+            <div className="pt-2">
+              <Button
+                type="button"
+                variant="link"
+                onClick={toggleMode}
+                className="w-full text-primary hover:text-primary/80"
+              >
+                {mode === 'login'
+                  ? 'Нет аккаунта? Зарегистрироваться'
+                  : 'Уже есть аккаунт? Войти'}
+              </Button>
+            </div>
           </CardFooter>
         </form>
       </Form>
