@@ -18,9 +18,9 @@ export function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className="border-b gradient-bg">
       <div className="container flex h-16 items-center px-4">
-        <Link href="/" className="nav-logo">
+        <Link href="/" className="font-bold text-xl gradient-text">
           Анализ эмоций
         </Link>
 
@@ -51,7 +51,7 @@ export function Navbar() {
               ) : (
                 <Link href="/auth" passHref>
                   <Button
-                    className="btn-primary animate-pulse"
+                    className="btn-primary"
                   >
                     Войти
                   </Button>
