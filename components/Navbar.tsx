@@ -18,17 +18,17 @@ export function Navbar() {
   };
 
   return (
-    <nav className="border-b gradient-bg">
+    <nav>
       <div className="container nav-container flex h-16 items-center px-4 relative">
         {/* Логотип слева */}
         <div className="nav-logo-container">
-          <Link href="/" className="font-bold text-xl gradient-text">
+          <Link href="/" className="nav-logo">
             Анализ эмоций
           </Link>
         </div>
 
         {/* Кнопка "Проверить эмоции" по центру - видима на десктопе */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center hidden md:flex">
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center hidden md:flex nav-center-button">
           <Link href="/analyze" passHref>
             <Button
               className="btn-primary-large"
@@ -39,7 +39,7 @@ export function Navbar() {
         </div>
 
         {/* Навигация справа */}
-        <div style={{ marginLeft: 'auto' }} className="flex items-center space-x-4">
+        <div style={{ marginLeft: 'auto' }} className="flex items-center space-x-2">
           {!loading && (
             <>
               {user ? (
@@ -54,7 +54,7 @@ export function Navbar() {
                     href="/history"
                     className={`nav-link ${pathname === '/history' ? 'nav-link-active' : ''}`}
                   >
-                    История анализов
+                    История
                   </Link>
                   <Button
                     className="btn-secondary"
