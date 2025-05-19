@@ -70,21 +70,7 @@ export default function Home() {
         </Card>
       </div>
 
-      <Card className="w-full border-purple-200 dark:border-purple-800 shadow-md hover:shadow-lg transition-shadow duration-300">
-        <CardHeader className="card-header">
-          <CardTitle className="gradient-text">О системе</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>
-            Система анализа эмоций в тексте предназначена для определения эмоционального тона текстовых сообщений средней длины.
-            Она позволяет анализировать тексты на русском языке и определять интенсивность 7 базовых эмоций по десятибалльной шкале.
-          </p>
-          <p className="mt-2">
-            Система работает в пакетном режиме, что позволяет анализировать большие объемы текста за один раз.
-            Результаты анализа представляются в виде наглядных графиков, которые помогают быстро оценить эмоциональный фон текста.
-          </p>
-        </CardContent>
-      </Card>
+
     </div>
   );
 }
