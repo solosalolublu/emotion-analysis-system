@@ -11,45 +11,46 @@ body {
   padding: 0 1rem;
 }
 
-/* Градиентные стили */
+/* Градиентные стили в стиле Green Beach */
 .gradient-text {
-  background: linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  background: linear-gradient(to right, #06b6d4, #059669); /* Бирюзовый к зеленому */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .gradient-bg {
-  background: linear-gradient(to right, rgba(14, 165, 233, 0.05), rgba(16, 185, 129, 0.05)); /* Голубой к зеленому с прозрачностью */
+  background: linear-gradient(to right, rgba(6, 182, 212, 0.05), rgba(5, 150, 105, 0.05)); /* Бирюзовый к зеленому с прозрачностью */
 }
 
 .gradient-border {
   border: 1px solid transparent;
-  background-image: linear-gradient(white, white), 
-                    linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  background-image: linear-gradient(white, white),
+                    linear-gradient(to right, #06b6d4, #059669); /* Бирюзовый к зеленому */
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
 
-/* Стили для карточек */
+/* Стили для карточек в стиле Green Beach */
 .card {
   background-color: white;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.1);
   overflow: hidden;
+  border: 1px solid rgba(6, 182, 212, 0.1);
 }
 
 .card-header {
-  background: linear-gradient(to right, rgba(14, 165, 233, 0.05), rgba(16, 185, 129, 0.05)); /* Голубой к зеленому с прозрачностью */
-  border-bottom: 1px solid #e6f7ff;
+  background: linear-gradient(to right, rgba(6, 182, 212, 0.05), rgba(5, 150, 105, 0.05)); /* Бирюзовый к зеленому с прозрачностью */
+  border-bottom: 1px solid rgba(6, 182, 212, 0.1);
   padding: 1.5rem;
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
 }
 
-/* Стили для кнопок */
+/* Стили для кнопок в стиле Green Beach */
 .btn-primary {
-  background: linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  background: linear-gradient(to right, #06b6d4, #059669); /* Бирюзовый к зеленому */
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -59,12 +60,13 @@ body {
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
+  box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  opacity: 0.95;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
 }
 
 /* Анимации */
@@ -77,17 +79,17 @@ body {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* Стили для навигации */
+/* Стили для навигации в стиле Green Beach */
 .nav-link {
   position: relative;
-  color: #4b5563;
+  color: #1f2937;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: #0ea5e9; /* Голубой */
+  color: #06b6d4; /* Бирюзовый */
 }
 
 .nav-link::after {
@@ -97,8 +99,9 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  background: linear-gradient(to right, #06b6d4, #059669); /* Бирюзовый к зеленому */
   transition: width 0.3s;
+  border-radius: 2px;
 }
 
 .nav-link:hover::after {
@@ -106,7 +109,7 @@ body {
 }
 
 .nav-link-active {
-  color: #0ea5e9; /* Голубой */
+  color: #06b6d4; /* Бирюзовый */
 }
 
 .nav-link-active::after {
