@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { EmotionResults } from '@/components/EmotionResults';
@@ -20,23 +20,19 @@ type Emotions = {
 
 export default function AnalyzePage() {
   const [text, setText] = useState('');
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState<Emotions | null>(null);
+  const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(null);
 
   // Функция для анализа текста
-  const analyzeText = async () => {
-    if (!text.trim()) {
-      toast.error('Пожалуйста, введите текст для анализа');
+  const analyzeText = async (inputText: string) => {
+    if (!inputText.trim()) {
+      setResults(null);
       return;
     }
-
-    setIsAnalyzing(true);
-    setResults(null);
 
     try {
       // Имитация запроса к API для анализа эмоций
       // В реальном приложении здесь будет запрос к API
-      await new Promise(resolve => setTimeout(resolve, 1500));
 
       // Генерируем случайные результаты для демонстрации
       // В реальном приложении здесь будут результаты от API
@@ -51,12 +47,31 @@ export default function AnalyzePage() {
       };
 
       setResults(mockResults);
-      toast.success('Анализ завершен');
     } catch (error) {
       console.error('Error analyzing text:', error);
       toast.error('Произошла ошибка при анализе текста');
-    } finally {
-      setIsAnalyzing(false);
+    }
+  };
+
+  // Обработчик изменения текста с задержкой
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = e.target.value;
+    setText(newText);
+
+    // Очищаем предыдущий таймер
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
+
+    // Устанавливаем новый таймер для анализа после прекращения ввода
+    if (newText.trim()) {
+      const timeout = setTimeout(() => {
+        analyzeText(newText);
+      }, 1000); // Задержка в 1 секунду
+
+      setTypingTimeout(timeout);
+    } else {
+      setResults(null);
     }
   };
 
@@ -73,18 +88,10 @@ export default function AnalyzePage() {
             placeholder="Введите текст для анализа эмоций..."
             className="min-h-[200px] resize-y"
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={handleTextChange}
           />
         </CardContent>
-        <CardFooter className="flex justify-end">
-          <Button
-            onClick={analyzeText}
-            disabled={isAnalyzing || !text.trim()}
-            className="btn-primary"
-          >
-            {isAnalyzing ? 'Анализ...' : 'Начать анализ'}
-          </Button>
-        </CardFooter>
+
       </Card>
 
       {results && (
