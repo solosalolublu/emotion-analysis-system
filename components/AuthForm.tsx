@@ -72,6 +72,8 @@ export function AuthForm() {
             data: {
               registered_at: new Date().toISOString(),
             },
+            // Отключаем необходимость подтверждения по email для тестирования
+            emailRedirectTo: window.location.origin + '/auth',
           },
         });
 
@@ -81,10 +83,26 @@ export function AuthForm() {
         if (data?.user?.identities?.length === 0) {
           toast.error('Пользователь с таким email уже существует');
         } else {
-          toast.success('Регистрация успешна! Проверьте вашу почту для подтверждения.');
+          // Автоматически входим в систему после регистрации
+          if (!isDemoMode) {
+            // Автоматический вход после регистрации
+            const { error: signInError } = await supabase.auth.signInWithPassword({
+              email: values.email,
+              password: values.password,
+            });
 
-          // В демо-режиме автоматически переключаемся на форму входа
-          if (isDemoMode) {
+            if (signInError) {
+              toast.success('Регистрация успешна! Пожалуйста, войдите в систему.');
+              setMode('login');
+              form.reset();
+            } else {
+              toast.success('Регистрация успешна! Вы автоматически вошли в систему.');
+              // Перенаправляем на панель управления
+              window.location.href = '/dashboard';
+            }
+          } else {
+            toast.success('Регистрация успешна! Проверьте вашу почту для подтверждения.');
+            // В демо-режиме автоматически переключаемся на форму входа
             setMode('login');
             form.reset();
           }

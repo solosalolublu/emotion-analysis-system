@@ -17,7 +17,13 @@ if (typeof window !== 'undefined') {
   const supabaseAnonKey = isDemoMode ? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhtdHd6c2Fvc2Jib3BrdnhyaHRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ4NTU5MTgsImV4cCI6MjAwMDQzMTkxOH0.demo-key' : process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
   // Создаем клиент Supabase
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
+  supabase = createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true
+    }
+  });
 } else {
   // Создаем заглушку для SSR
   supabase = {
