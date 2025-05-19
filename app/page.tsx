@@ -1,103 +1,90 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex flex-col items-center justify-center space-y-8 max-w-4xl mx-auto">
+      <div className="text-center space-y-4 gradient-bg p-8 rounded-lg w-full">
+        <h1 className="text-4xl font-bold gradient-text">
+          Система анализа эмоций в тексте
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Определение эмоционального тона текстовых сообщений с оценкой интенсивности эмоций
+        </p>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        <Card className="border-purple-200 dark:border-purple-800 shadow-md hover:shadow-lg transition-shadow duration-300">
+          <CardHeader className="card-header">
+            <CardTitle className="gradient-text">Анализ текста</CardTitle>
+            <CardDescription>
+              Определение 7 базовых эмоций в тексте с оценкой их интенсивности
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside space-y-2">
+              <li>Радость (довольство)</li>
+              <li>Удивление</li>
+              <li>Печаль (грусть)</li>
+              <li>Гнев (злость)</li>
+              <li>Отвращение</li>
+              <li>Презрение</li>
+              <li>Страх</li>
+            </ul>
+            <div className="mt-4">
+              <Link href="/dashboard" passHref>
+                <Button className="w-full btn-primary">
+                  Начать анализ
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-purple-200 dark:border-purple-800 shadow-md hover:shadow-lg transition-shadow duration-300">
+          <CardHeader className="card-header">
+            <CardTitle className="gradient-text">Источники данных</CardTitle>
+            <CardDescription>
+              Анализ эмоций из различных источников
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc list-inside space-y-2">
+              <li>Произвольный текст</li>
+              <li>Электронные письма</li>
+              <li>Сообщения из Telegram</li>
+              <li>Посты в социальных сетях</li>
+            </ul>
+            <div className="mt-4">
+              <Link href="/auth" passHref>
+                <Button
+                  variant="outline"
+                  className="w-full border-purple-300 dark:border-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 dark:hover:from-purple-900 dark:hover:to-pink-900"
+                >
+                  Войти в систему
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card className="w-full border-purple-200 dark:border-purple-800 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <CardHeader className="card-header">
+          <CardTitle className="gradient-text">О системе</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>
+            Система анализа эмоций в тексте предназначена для определения эмоционального тона текстовых сообщений средней длины.
+            Она позволяет анализировать тексты на русском языке и определять интенсивность 7 базовых эмоций по десятибалльной шкале.
+          </p>
+          <p className="mt-2">
+            Система работает в пакетном режиме, что позволяет анализировать большие объемы текста за один раз.
+            Результаты анализа представляются в виде наглядных графиков, которые помогают быстро оценить эмоциональный фон текста.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
