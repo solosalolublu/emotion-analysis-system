@@ -1,26 +1,143 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: 280 70% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 320 70% 60%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  
+  --accent: 280 10% 95%;
+  --accent-foreground: 240 5.9% 10%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 280 70% 50%;
+  
+  --radius: 0.75rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --primary: 280 70% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 320 70% 60%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --accent: 280 10% 15%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 280 70% 50%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Градиентные стили */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500;
+}
+
+.gradient-bg {
+  @apply bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30;
+}
+
+.gradient-border {
+  @apply border border-transparent bg-gradient-to-r from-purple-400 to-pink-400 dark:from-purple-800 dark:to-pink-800 bg-clip-border;
+}
+
+/* Стили для карточек */
+.card-header {
+  @apply bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-b border-purple-100 dark:border-purple-900 rounded-t-lg;
+}
+
+/* Стили для кнопок */
+.btn-primary {
+  @apply bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Стили для форм */
+.form-input-wrapper {
+  @apply relative overflow-hidden rounded-md;
+}
+
+.form-input {
+  @apply w-full px-4 py-3 border border-purple-100 dark:border-purple-900 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-900 transition-all duration-200;
+}
+
+.form-label {
+  @apply text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+}
+
+/* Стили для навигации */
+.nav-link {
+  @apply relative px-3 py-2 text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.nav-link-active {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.nav-link-active::after {
+  @apply w-full;
 }
