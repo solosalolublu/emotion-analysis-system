@@ -63,7 +63,7 @@ export default function AnalyzePage() {
   return (
     <div className="container max-w-4xl mx-auto py-8">
       <h1 className="text-2xl font-bold mb-6 text-center">Анализ эмоций в тексте</h1>
-      
+
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>Введите текст для анализа</CardTitle>
@@ -77,8 +77,8 @@ export default function AnalyzePage() {
           />
         </CardContent>
         <CardFooter className="flex justify-end">
-          <Button 
-            onClick={analyzeText} 
+          <Button
+            onClick={analyzeText}
             disabled={isAnalyzing || !text.trim()}
             className="btn-primary"
           >
@@ -91,19 +91,13 @@ export default function AnalyzePage() {
         <div className="animate-fade-in">
           <h2 className="text-xl font-semibold mb-4">Результаты анализа</h2>
           <EmotionResults emotions={results} />
-          
+
           <div className="mt-8 p-4 border border-primary-translucent rounded-lg bg-secondary">
             <h3 className="text-lg font-medium mb-2">Хотите сохранить результаты?</h3>
             <p className="mb-4">Зарегистрируйтесь или войдите в систему, чтобы сохранять историю анализов и получить доступ к расширенным функциям.</p>
-            <div className="flex gap-4">
+            <div className="flex">
               <Button className="btn-primary" onClick={() => window.location.href = '/auth'}>
                 Войти в систему
-              </Button>
-              <Button className="btn-secondary" onClick={() => {
-                setText('');
-                setResults(null);
-              }}>
-                Новый анализ
               </Button>
             </div>
           </div>
