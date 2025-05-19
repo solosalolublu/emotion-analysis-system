@@ -1,0 +1,114 @@
+/* Базовые стили */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Градиентные стили */
+.gradient-text {
+  background: linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, rgba(14, 165, 233, 0.05), rgba(16, 185, 129, 0.05)); /* Голубой к зеленому с прозрачностью */
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Стили для карточек */
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-header {
+  background: linear-gradient(to right, rgba(14, 165, 233, 0.05), rgba(16, 185, 129, 0.05)); /* Голубой к зеленому с прозрачностью */
+  border-bottom: 1px solid #e6f7ff;
+  padding: 1.5rem;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+/* Стили для кнопок */
+.btn-primary {
+  background: linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Стили для навигации */
+.nav-link {
+  position: relative;
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #0ea5e9; /* Голубой */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #0ea5e9, #10b981); /* Голубой к зеленому */
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link-active {
+  color: #0ea5e9; /* Голубой */
+}
+
+.nav-link-active::after {
+  width: 100%;
+}

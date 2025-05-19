@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./styles.css"; // Добавляем наш файл стилей с зелено-голубым градиентом
 import { Navbar } from "@/components/Navbar";
 import { AuthProvider } from "@/lib/auth-context";
 import { Toaster } from "@/components/ui/sonner";
