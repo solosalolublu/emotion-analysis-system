@@ -24,7 +24,7 @@ export function Navbar() {
           Анализ эмоций
         </Link>
 
-        <div className="ml-auto flex items-center space-x-4">
+        <div style={{ marginLeft: 'auto' }} className="flex items-center space-x-4">
           {!loading && (
             <>
               {user ? (
