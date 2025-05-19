@@ -19,11 +19,26 @@ export function Navbar() {
 
   return (
     <nav className="border-b gradient-bg">
-      <div className="container flex h-16 items-center px-4">
-        <Link href="/" className="font-bold text-xl gradient-text">
-          Анализ эмоций
-        </Link>
+      <div className="container nav-container flex h-16 items-center px-4 relative">
+        {/* Логотип слева */}
+        <div className="nav-logo-container">
+          <Link href="/" className="font-bold text-xl gradient-text">
+            Анализ эмоций
+          </Link>
+        </div>
 
+        {/* Кнопка "Проверить эмоции" по центру - видима на десктопе */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center hidden md:flex">
+          <Link href="/analyze" passHref>
+            <Button
+              className="btn-primary-large"
+            >
+              Проверить эмоции
+            </Button>
+          </Link>
+        </div>
+
+        {/* Навигация справа */}
         <div style={{ marginLeft: 'auto' }} className="flex items-center space-x-4">
           {!loading && (
             <>
@@ -59,6 +74,17 @@ export function Navbar() {
               )}
             </>
           )}
+        </div>
+
+        {/* Кнопка "Проверить эмоции" - видима только на мобильных */}
+        <div className="nav-center-button md:hidden mt-2">
+          <Link href="/analyze" passHref>
+            <Button
+              className="btn-primary-large w-full"
+            >
+              Проверить эмоции
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>

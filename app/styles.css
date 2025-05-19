@@ -67,6 +67,29 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Стиль для большой кнопки в центре навигации */
+.btn-primary-large {
+  background: linear-gradient(to right, #8b5cf6, #ec4899); /* Фиолетовый к розовому */
+  color: white;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+  letter-spacing: 0.02em;
+}
+
+.btn-primary-large:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(139, 92, 246, 0.4);
+}
+
 .btn-secondary {
   background: rgba(139, 92, 246, 0.1);
   color: #8b5cf6;
@@ -169,6 +192,39 @@ nav {
   border-bottom: 1px solid rgba(139, 92, 246, 0.1);
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .btn-primary-large {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* На мобильных устройствах скрываем кнопку в центре и показываем ее внизу навигации */
+  .nav-center-button {
+    position: static;
+    transform: none;
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Изменяем структуру навигации на мобильных устройствах */
+  .nav-container {
+    flex-direction: column;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .nav-logo {
