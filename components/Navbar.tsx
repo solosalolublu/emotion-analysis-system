@@ -18,9 +18,9 @@ export function Navbar() {
   };
 
   return (
-    <nav className="border-b gradient-bg">
+    <nav>
       <div className="container flex h-16 items-center px-4">
-        <Link href="/" className="font-bold text-xl gradient-text">
+        <Link href="/" className="nav-logo">
           Анализ эмоций
         </Link>
 
@@ -29,28 +29,29 @@ export function Navbar() {
             <>
               {user ? (
                 <>
-                  <Link href="/dashboard" passHref>
-                    <Button
-                      variant={pathname === '/dashboard' ? 'default' : 'ghost'}
-                    >
-                      Панель управления
-                    </Button>
+                  <Link
+                    href="/dashboard"
+                    className={`nav-link ${pathname === '/dashboard' ? 'nav-link-active' : ''}`}
+                  >
+                    Панель управления
                   </Link>
-                  <Link href="/history" passHref>
-                    <Button
-                      variant={pathname === '/history' ? 'default' : 'ghost'}
-                    >
-                      История анализов
-                    </Button>
+                  <Link
+                    href="/history"
+                    className={`nav-link ${pathname === '/history' ? 'nav-link-active' : ''}`}
+                  >
+                    История анализов
                   </Link>
-                  <Button variant="outline" onClick={handleSignOut}>
+                  <Button
+                    className="btn-secondary"
+                    onClick={handleSignOut}
+                  >
                     Выйти
                   </Button>
                 </>
               ) : (
                 <Link href="/auth" passHref>
                   <Button
-                    variant={pathname === '/auth' ? 'default' : 'ghost'}
+                    className="btn-primary animate-pulse"
                   >
                     Войти
                   </Button>

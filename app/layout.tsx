@@ -34,9 +34,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Декоративные элементы Green Beach */}
+        <div className="beach-wave"></div>
+        <div className="beach-circle"></div>
+        <div className="beach-circle" style={{ top: '60%', left: '5%', width: '200px', height: '200px' }}></div>
+
         <AuthProvider>
           <Navbar />
-          <main className="container mx-auto py-6 px-4">
+          <main className="container mx-auto py-6 px-4 relative z-10">
             {children}
           </main>
           <Toaster />

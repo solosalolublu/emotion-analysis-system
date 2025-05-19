@@ -1,14 +1,43 @@
-/* Базовые стили */
+/* Базовые стили в стиле Green Beach */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: #f0fdfa; /* Очень светлый мятный фон */
+  color: #134e4a; /* Темно-бирюзовый текст */
+  background-image:
+    linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px; /* Размер сетки */
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+/* Декоративные элементы */
+.beach-wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2306b6d4' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.beach-circle {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, rgba(5, 150, 105, 0.03) 70%, transparent 100%);
+  z-index: -1;
 }
 
 /* Градиентные стили в стиле Green Beach */
@@ -33,26 +62,55 @@ body {
 
 /* Стили для карточек в стиле Green Beach */
 .card {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 0.75rem;
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.1);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
   overflow: hidden;
-  border: 1px solid rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.2);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #06b6d4, #059669);
+  z-index: 1;
 }
 
 .card-header {
-  background: linear-gradient(to right, rgba(6, 182, 212, 0.05), rgba(5, 150, 105, 0.05)); /* Бирюзовый к зеленому с прозрачностью */
+  background: linear-gradient(to right, rgba(6, 182, 212, 0.1), rgba(5, 150, 105, 0.1)); /* Бирюзовый к зеленому с прозрачностью */
   border-bottom: 1px solid rgba(6, 182, 212, 0.1);
   padding: 1.5rem;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  position: relative;
+}
+
+.card-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(6, 182, 212, 0.3), rgba(5, 150, 105, 0.3));
 }
 
 /* Стили для кнопок в стиле Green Beach */
 .btn-primary {
   background: linear-gradient(to right, #06b6d4, #059669); /* Бирюзовый к зеленому */
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -60,13 +118,49 @@ body {
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
 }
 
 .btn-primary:hover {
-  opacity: 0.95;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+  box-shadow: 0 6px 15px rgba(6, 182, 212, 0.3);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: rgba(6, 182, 212, 0.1);
+  color: #06b6d4;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(6, 182, 212, 0.2);
+  transform: translateY(-2px);
 }
 
 /* Анимации */
@@ -75,28 +169,155 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes waveAnimation {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
+  100% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.3); }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
+.animate-wave {
+  animation: waveAnimation 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Стили для форм */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #134e4a;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+}
+
+.form-input::placeholder {
+  color: rgba(19, 78, 74, 0.5);
+}
+
+/* Стили для таблиц */
+.table-container {
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: linear-gradient(to right, rgba(6, 182, 212, 0.1), rgba(5, 150, 105, 0.1));
+  color: #134e4a;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.2);
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+  color: #134e4a;
+}
+
+.table tr:hover {
+  background-color: rgba(6, 182, 212, 0.05);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
 /* Стили для навигации в стиле Green Beach */
+nav {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: 0 2px 10px rgba(6, 182, 212, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: linear-gradient(to right, #06b6d4, #059669);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-logo::before {
+  content: '🌊';
+  font-size: 1.25rem;
+}
+
 .nav-link {
   position: relative;
-  color: #1f2937;
+  color: #134e4a;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: all 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
 }
 
 .nav-link:hover {
   color: #06b6d4; /* Бирюзовый */
+  background-color: rgba(6, 182, 212, 0.05);
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 2px;
   background: linear-gradient(to right, #06b6d4, #059669); /* Бирюзовый к зеленому */
@@ -105,13 +326,14 @@ body {
 }
 
 .nav-link:hover::after {
-  width: 100%;
+  width: 80%;
 }
 
 .nav-link-active {
   color: #06b6d4; /* Бирюзовый */
+  background-color: rgba(6, 182, 212, 0.1);
 }
 
 .nav-link-active::after {
-  width: 100%;
+  width: 80%;
 }
